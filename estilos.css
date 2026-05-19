@@ -1,0 +1,1039 @@
+:root {
+    --primary: #0c0268;
+    --accent: #0071e3;
+    --bg-main: #f4f6f8; 
+    --card-bg: #ffffff;
+    --text-main: #1d1d1f;
+    --text-muted: #666666;
+    --border-color: #eaeaea;
+    --radius-lg: 12px;
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 20px rgba(12, 2, 104, 0.08);
+    --transition: all 0.3s ease;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+    -webkit-tap-highlight-color: transparent;
+}
+
+body { 
+    background-color: var(--bg-main); 
+    color: var(--text-main); 
+    line-height: 1.4; 
+}
+
+/* HEADER SÓLIDO Y OPACO */
+.header-solid {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--card-bg); 
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+}
+
+.nav__container {
+    width: 95%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    height: 75px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 20px;
+}
+
+.nav__title img { 
+    height: 45px; 
+    object-fit: contain; 
+    display: block; 
+}
+
+.search-container { 
+    flex-grow: 1; 
+    max-width: 450px; 
+}
+
+.search-input {
+    width: 100%; 
+    padding: 12px 20px;
+    background: var(--bg-main); 
+    border: 1px solid transparent;
+    border-radius: 8px; 
+    outline: none; 
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.search-input:focus { 
+    background: #fff; 
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 3px rgba(12, 2, 104, 0.1); 
+}
+
+/* BOTÓN DE MENÚ */
+.menu-btn {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    color: var(--primary); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 8px; 
+    border-radius: 8px; 
+    transition: var(--transition);
+}
+
+.menu-btn:hover { 
+    background: var(--bg-main); 
+}
+
+/* PANEL LATERAL (MENÚ DESPLEGABLE) */
+.sidebar-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100vh;
+    background: rgba(0,0,0,0.5); 
+    z-index: 1001;
+    opacity: 0; 
+    pointer-events: none; 
+    transition: var(--transition);
+}
+
+.sidebar-overlay.active { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+.sidebar-menu {
+    position: fixed; 
+    top: 0; 
+    right: -350px; 
+    width: 85%; 
+    max-width: 320px; 
+    height: 100vh;
+    background-color: var(--card-bg); 
+    z-index: 1002;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    display: flex; 
+    flex-direction: column; 
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-menu.active { 
+    right: 0; 
+}
+
+.sidebar-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 { 
+    font-size: 18px; 
+    color: var(--primary); 
+    font-weight: 700; 
+}
+
+.close-btn { 
+    background: none; 
+    border: none; 
+    font-size: 28px; 
+    color: var(--text-muted); 
+    cursor: pointer; 
+}
+
+.sidebar-list { 
+    list-style: none; 
+    overflow-y: auto; 
+    padding: 15px; 
+    flex-grow: 1; 
+}
+
+.sidebar-link, .sidebar-group-title {
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+    padding: 12px 15px; 
+    color: var(--text-main); 
+    text-decoration: none;
+    font-size: 15px; 
+    font-weight: 600; 
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: var(--transition);
+}
+
+.sidebar-link:hover, .sidebar-group-title:hover { 
+    background: var(--bg-main); 
+    color: var(--primary); 
+}
+
+/* ICONOS PROFESIONALES */
+.sidebar-link svg, .sidebar-group-title svg.icon {
+    width: 20px; 
+    height: 20px; 
+    stroke: var(--primary); 
+    flex-shrink: 0;
+}
+
+.chevron {
+    margin-left: auto; 
+    width: 16px; 
+    height: 16px; 
+    transition: transform 0.3s; 
+    stroke: var(--text-muted);
+}
+
+.sidebar-group.open .chevron { 
+    transform: rotate(180deg); 
+}
+
+/* SUBCATEGORÍAS ACORDEÓN */
+.sidebar-sub {
+    list-style: none; 
+    padding-left: 45px;
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease;
+}
+
+.sidebar-group.open .sidebar-sub { 
+    max-height: 500px; 
+}
+
+.sidebar-anchor {
+    display: block; 
+    padding: 10px 0; 
+    color: var(--text-muted);
+    text-decoration: none; 
+    font-size: 14px; 
+    transition: var(--transition);
+}
+
+.sidebar-anchor:hover { 
+    color: var(--primary); 
+    transform: translateX(5px); 
+}
+
+.active-filter { 
+    color: var(--accent) !important; 
+    font-weight: 700; 
+}
+
+/* =========================================
+   ESTADO VACÍO DEL BUSCADOR (EMPTY STATE)
+   ========================================= */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--border-color);
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+}
+
+.empty-state svg {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+}
+
+.empty-state h3 {
+    color: var(--text-main);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    font-size: 14px;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+/* PRODUCTOS (ESCRITORIO) */
+.store-wrapper { 
+    max-width: 1200px; 
+    margin: 2.5rem auto; 
+    padding: 0 1.5rem; 
+}
+
+.products-list { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.5rem; 
+}
+
+.product-item {
+    background: var(--card-bg); 
+    border-radius: var(--radius-lg); 
+    padding: 1.5rem;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    border: 1px solid var(--border-color); 
+    transition: var(--transition);
+}
+
+.product-item:hover { 
+    transform: translateY(-5px); 
+    box-shadow: var(--shadow-hover); 
+    border-color: #ccc; 
+}
+
+.product-item img { 
+    width: 100%; 
+    height: 170px; 
+    object-fit: contain; 
+    margin-bottom: 1rem; 
+    cursor: pointer; 
+    transition: var(--transition); 
+}
+
+.product-item:hover img { 
+    transform: scale(1.05); 
+}
+
+.product-item p { 
+    font-size: 13px; 
+    font-weight: 500; 
+    text-align: center; 
+    margin-bottom: 1.5rem; 
+    flex-grow: 1; 
+}
+
+.product-item a {
+    width: 100%; 
+    padding: 10px 0; 
+    background-color: var(--primary); 
+    color: #ffffff;
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    font-size: 13px; 
+    transition: var(--transition);
+}
+
+.product-item a:hover { 
+    background-color: #150699; 
+}
+
+/* MODAL Y BOTONES FLOTANTES */
+.modal-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 2000; 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+}
+
+.modal-overlay.show { 
+    opacity: 1; 
+}
+
+.modal-content { 
+    position: relative; 
+    max-width: 90%; 
+    max-height: 85vh; 
+}
+
+.modal-content img { 
+    max-width: 100%; 
+    max-height: 80vh; 
+    border-radius: 8px; 
+    transform: scale(0.95); 
+    transition: var(--transition); 
+}
+
+.modal-overlay.show .modal-content img { 
+    transform: scale(1); 
+}
+
+.modal-close { 
+    position: absolute; 
+    top: -45px; 
+    right: 0; 
+    color: #fff; 
+    font-size: 36px; 
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+}
+
+.float-container { 
+    position: fixed; 
+    bottom: 24px; 
+    right: 24px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    z-index: 990; 
+}
+
+.float-btn { 
+    width: 54px; 
+    height: 54px; 
+    border-radius: 50px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+    text-decoration: none; 
+    transition: var(--transition); 
+}
+
+.float-btn:hover { 
+    transform: scale(1.1); 
+}
+
+.btn-wa { 
+    background-color: #25d366; 
+    color: white; 
+}
+
+.btn-top { 
+    background-color: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    color: var(--text-main); 
+    opacity: 0; 
+    pointer-events: none; 
+    transform: translateY(20px); 
+}
+
+.btn-top.show { 
+    opacity: 1; 
+    pointer-events: auto; 
+    transform: translateY(0); 
+}
+
+footer { 
+    text-align: center; 
+    padding: 2rem 1rem; 
+    color: var(--text-muted); 
+    font-size: 13px; 
+    border-top: 1px solid var(--border-color);
+}
+
+/* PÁGINA DE POLÍTICAS */
+.text-page-wrapper {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    min-height: 60vh;
+}
+
+.text-page-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+.text-page-card h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 24px;
+    border-bottom: 2px solid var(--bg-main);
+    padding-bottom: 10px;
+}
+
+.text-page-card h3 {
+    color: var(--text-main);
+    margin: 1.5rem 0 1rem 0;
+    font-size: 18px;
+}
+
+.text-page-card p, .text-page-card ul {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.text-page-card ul {
+    padding-left: 20px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.btn-back:hover {
+    color: var(--primary);
+    transform: translateX(-5px);
+}
+
+/* =========================================
+   RESPONSIVE MÓVIL (AJUSTE COMPLETO A 2 COLUMNAS)
+   ========================================= */
+/* =========================================
+   RESPONSIVE MÓVIL (MAXIMIZANDO ANCHO)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .search-container { 
+        position: absolute; 
+        top: 75px; 
+        left: 0; 
+        width: 100%; 
+        max-width: 100%; 
+        background: var(--card-bg); 
+        padding: 10px 15px; 
+        border-bottom: 1px solid var(--border-color); 
+    }
+    
+    /* 1. Reducimos el margen a los lados de la pantalla */
+    .store-wrapper { 
+        margin-top: 4.5rem; 
+        padding: 0 0.5rem; /* Margen muy finito a los lados de la pantalla */
+    }
+    
+    /* 2. Reducimos la separación entre las dos columnas */
+    .products-list { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.6rem; /* Menos espacio hueco entre tarjeta y tarjeta */
+        padding: 0; /* Quitamos padding extra que robaba espacio */
+    }
+    
+    /* 3. Reducimos el espacio en blanco ADENTRO de la tarjeta */
+    .product-item {
+        padding: 0.6rem; /* Esto hace que la foto pueda crecer más a los lados */
+        border-radius: 10px;
+    }
+
+    .product-item img {
+        height: 130px; /* Un poquito más altas para compensar lo ancho */
+        margin-bottom: 0.6rem;
+    }
+
+    .product-item p {
+        font-size: 12px; 
+        margin-bottom: 0.8rem;
+    }
+
+    .product-item a {
+        padding: 8px 0;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    
+    .text-page-card { 
+        padding: 1.5rem; 
+    }
+    
+    .text-page-card h2 { 
+        font-size: 20px; 
+    }
+}
+
+    
+    .store-wrapper { 
+        margin-top: 4.5rem; 
+    }
+    
+    .products-list { 
+        /* Forzamos estrictamente 2 columnas idénticas a la par */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1rem; 
+        padding: 0 10px;
+    }
+    
+    .product-item {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .product-item img {
+        height: 120px; /* Reducimos la altura de foto para que quepa proporcional en la doble columna móvil */
+    }
+
+    .product-item p {
+        font-size: 12px; /* Ajuste sutil de letra para que las descripciones no se amontonen */
+        margin-bottom: 1rem;
+    }
+
+    .product-item a {
+        padding: 8px 0;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    
+    .text-page-card { 
+        padding: 1.5rem; 
+    }
+    
+    .text-page-card h2 { 
+        font-size: 20px; 
+    }
+}
+/* =========================================
+   BANNER DE BIENVENIDA (HERO SECTION)
+   ========================================= */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Círculos sutiles de fondo para un toque moderno y elegante */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.hero-content p {
+    font-size: 15px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Ajuste del banner para teléfonos */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+    }
+    
+    .hero-content h2 {
+        font-size: 20px;
+    }
+    
+    .hero-content p {
+        font-size: 13px;
+    }
+}
+
+/* =========================================
+   PANTALLA DE BIENVENIDA (SPLASH SCREEN)
+   ========================================= */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff; /* Fondo totalmente blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Para que quede por encima de absolutamente todo */
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+.splash-logo {
+    width: 70%;
+    max-width: 320px; /* Logo en grande */
+    object-fit: contain;
+    animation: pulse 1.5s infinite; /* Efecto de latido elegante */
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Esta clase se la pondremos con JavaScript para que desaparezca suavemente */
+.splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =========================================
+   ZONA DE ACCIONES RÁPIDAS (HEADER ACTIONS)
+   ========================================= */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.currency-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    background-color: var(--bg-main);
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary);
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.action-btn:hover {
+    background-color: var(--bg-main);
+}
+
+.action-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Burbuja de Notificación de Favoritos */
+.fav-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: #ff3b30;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 1px solid var(--card-bg);
+}
+
+/* BOTÓN CORAZÓN EN LAS TARJETAS */
+.fav-card-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.fav-card-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.fav-card-btn:hover {
+    transform: scale(1.08);
+    color: #ff3b30;
+}
+
+.fav-card-btn.active {
+    background-color: #ff3b30;
+    border-color: #ff3b30;
+    color: #ffffff;
+}
+
+/* PANEL LATERAL DE FAVORITOS (WISH LIST / TOTALES) */
+.fav-panel-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(0,0,0,0.4); z-index: 1001; opacity: 0; pointer-events: none; transition: var(--transition);
+}
+.fav-panel-overlay.active { opacity: 1; pointer-events: auto; }
+
+.fav-sidebar {
+    position: fixed; top: 0; right: -350px; width: 85%; max-width: 320px; height: 100vh;
+    background-color: var(--card-bg); z-index: 1003; box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fav-sidebar.active { right: 0; }
+
+.fav-sidebar-header {
+    display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--border-color);
+}
+.fav-sidebar-header h3 { font-size: 16px; font-weight: 700; color: var(--primary); }
+
+.fav-sidebar-content { flex-grow: 1; overflow-y: auto; padding: 20px; }
+.empty-favs-text { font-size: 14px; color: var(--text-muted); text-align: center; margin-top: 2rem; }
+
+.fav-item-row {
+    padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;
+}
+.fav-item-title { font-size: 13px; font-weight: 500; color: var(--text-main); margin-right: 10px; }
+.fav-item-price { font-size: 13px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+
+.fav-sidebar-footer { padding: 20px; border-top: 1px solid var(--border-color); background-color: #fafafa; }
+.fav-total-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.fav-total-box span { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+.fav-total-box strong { font-size: 18px; font-weight: 700; color: var(--primary); }
+
+.btn-cotizar-all {
+    width: 100%; padding: 12px; background-color: #25d366; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; transition: var(--transition);
+}
+.btn-cotizar-all:hover { background-color: #20ba59; }
+
+/* AJUSTES RESPONSIVE PARA EL HEADER */
+@media screen and (max-width: 768px) {
+    .header-solid { height: auto; }
+    .nav__container { height: 65px; }
+    .header-actions { gap: 6px; }
+    .currency-badge { display: none; } /* Ocultamos la moneda en celular para ahorrar espacio */
+    .action-btn { width: 32px; height: 32px; }
+}
+/* =========================================
+   MODAL DE FAVORITOS INTERACTIVO (TABLA)
+   ========================================= */
+.fav-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px); /* Suave desenfoque de fondo */
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Activación fluida */
+.fav-modal-overlay.show {
+    opacity: 1;
+}
+
+.fav-modal {
+    background: var(--card-bg);
+    width: 92%;
+    max-width: 600px;
+    max-height: 75vh;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.fav-modal-overlay.show .fav-modal {
+    transform: scale(1);
+}
+
+.fav-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.fav-modal-header h3 {
+    font-size: 17px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.fav-modal-body {
+    padding: 1.2rem 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.empty-favs-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* ESTILOS DE LA TABLA COMPONENTES */
+.fav-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.fav-table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 700;
+}
+
+.fav-table td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.fav-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: var(--bg-main);
+    padding: 4px;
+    display: block;
+}
+
+.fav-desc {
+    font-size: 13px;
+    color: var(--text-main);
+    padding: 0 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Recorta textos exageradamente largos a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Botón Cotizar Verde WhatsApp estilo Tabla */
+.fav-action-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.fav-action-btn:hover {
+    background-color: #20ba59;
+    transform: translateY(-1px);
+}
+/* =========================================
+   RESPONSIVE MÓVIL (AJUSTE COMPLETO Y DEFINITIVO)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* 1. Reparación de la línea fantasma del Header */
+    .header-solid { height: auto; }
+    .nav__container { 
+        height: auto; 
+        flex-wrap: wrap; /* Permite que el buscador baje a la segunda línea naturalmente */
+        padding: 10px 0; 
+        gap: 10px;
+    }
+    .header-actions { margin-left: auto; gap: 6px; }
+    .currency-badge { display: none; } /* Ocultamos la moneda para ahorrar espacio */
+    .action-btn { width: 32px; height: 32px; }
+    
+    .search-container { 
+        position: relative; /* ¡El secreto! Ya no flota, está soldado al header */
+        top: 0; left: 0; 
+        width: 100%; max-width: 100%; 
+        padding: 5px 0; 
+        border-bottom: none; 
+        background: transparent;
+        order: 4; /* Lo empujamos al fondo del encabezado */
+    }
+    
+    /* 2. Ajuste del margen de productos porque el header ya es una pieza sólida */
+    .store-wrapper { 
+        margin-top: 1.5rem; 
+        padding: 0 0.5rem; 
+    }
+    
+    /* 3. Tarjetas estiradas a 2 columnas */
+    .products-list { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.6rem; 
+        padding: 0; 
+    }
+    .product-item { padding: 0.6rem; border-radius: 10px; }
+    .product-item img { height: 130px; margin-bottom: 0.6rem; }
+    .product-item p { font-size: 12px; margin-bottom: 0.8rem; }
+    .product-item a { padding: 8px 0; font-size: 12px; border-radius: 6px; }
+    
+    /* 4. Página de Políticas */
+    .text-page-card { padding: 1.5rem; }
+    .text-page-card h2 { font-size: 20px; }
+
+    /* 5. Ajustes del Modal de Favoritos */
+    .fav-modal { max-height: 85vh; }
+    .fav-modal-body { padding: 1rem; }
+    .fav-desc { font-size: 12px; padding: 0 8px; }
+    .fav-action-btn { padding: 7px 10px; font-size: 11px; }
+    .fav-thumb { width: 44px; height: 44px; }
+}

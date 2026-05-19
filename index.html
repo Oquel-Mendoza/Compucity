@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CATALOGO COMPUCITY</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <script src="script.js"></script> 
+</head>
+
+<body>  
+    <div id="splashScreen" class="splash-screen">
+        <img src="logo.png" alt="Logo Compucity" class="splash-logo">
+    </div>  
+    
+    <header class="header-solid">
+        <div class="nav__container">
+            <h1 class="nav__title">
+                <img src="logo.png" alt="Catalogo Compucity">
+            </h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar producto...">
+            </div>
+
+            <div class="header-actions">
+                <span class="currency-badge">NI (C$)</span>
+                
+                <button class="action-btn" id="btnRefresh" title="Restablecer catálogo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                </button>
+                
+                <button class="action-btn" id="btnFavorites" title="Mis Favoritos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <span class="fav-badge" id="favBadge">0</span>
+                </button>
+            </div>
+
+            <button class="menu-btn" id="menuToggle">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <div class="sidebar-menu" id="sidebarMenu">
+            <div class="sidebar-header">
+                <h3>Categorías</h3>
+                <button id="closeMenu" class="close-btn">&times;</button>
+            </div>
+            
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#" class="sidebar-link active-filter" category="all">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        <span>Computadoras</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="minipc">Mini PC</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="monitor">Monitores</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="procesador">Procesadores</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="placamadre">Placas Madre</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="ram">Memoria RAM</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="almacenamiento">Almacenamiento</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="12" rx="2" ry="2"></rect><path d="M2 16h20l-2 4H4l-2-4z"></path></svg>
+                        <span>Laptops</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="laptophp">Laptop HP</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="laptoplenovo">Laptop Lenovo</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="laptopdell">Laptop Dell</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="accesoriosparalaptop">Accesorios Laptops</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                        <span>Impresoras y Consumibles</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="impresoracanon">Impresora Canon</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="impresoraepson">Impresora Epson</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="impresorahp">Impresora HP</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="consumibles">Consumibles de Impresoras</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                        <span>Internet</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="internet">Conexión a Internet</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="cryc">Cable de Red y Conectores</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                        <span>Vigilancia</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="ezviz">Ezviz</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="tapo">Tapo</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="hikvision">HikVision</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        <span>Protectores de Voltaje</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="forza">Forza</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="cdp">CDP</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="tripplite">TrippLite</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="hikvision">HikVision</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                        <span>Accesorios</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="sw">Smart Watch</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="sye">Sillas y Escritorios</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="myt">Mouse y Teclado</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="cablesyadaptadores">Cables y Adaptadores</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="hub">HUB</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="audio">Audio</a></li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                        <span>Electrodomésticos</span>
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <ul class="sidebar-sub">
+                        <li><a href="#" class="sidebar-anchor" category="televisor">Televisor</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="refrigerador">Refrigerador</a></li>
+                        <li><a href="#" class="sidebar-anchor" category="lavadora">Lavadora</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="https://wa.me/50588024335?text=Hola,%20necesito%20ayuda" class="sidebar-link" target="_blank">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <span>Ayuda</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <div class="store-wrapper">			
+            
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <h3>No encontramos resultados</h3>
+                <p>Intenta buscar con otras palabras o revisa las categorías en el menú.</p>
+            </div>
+
+            <section class="products-list">
+                <div class="product-item" category="minipc">
+                    <img src="https://cdn.shopify.com/s/files/1/0550/9188/8211/files/lenovo-thinkcentre-m920q-tiny-mini-pc-system-black-02.png?v=1736254331" alt="" >
+                    <p>CPU Lenovo thinkcentre, Procesador I5 7th. 8GB RAM, 240GB almacenamiento.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="minipc">
+                    <img src="https://systemliquidation.com/cdn/shop/products/Untitleddesign_9_39c3f586-1ac7-4c18-8f90-42f29134fb67.png?v=1745517444" alt="" >
+                    <p>CPU Dell Optiplex, Procesador I3 6th. 8GB RAM, 240GB almacenamiento.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/4025_2570-300x300.jpg" alt="" >
+                    <p>Procesador Intel I3-14100</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/3916_2523.png" alt="" >
+                    <p>Procesador Intel I5-14400</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/4026_2571-300x300.jpg" alt="" >
+                    <p>Procesador Intel I7-14700K</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/07/4765_3573.jpg" alt="" >
+                    <p>Procesador Intel I9-14900K</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://www.pbtech.com/pacific/imgprod/C/P/CPUIT155225__3.jpg" alt="" >
+                    <p>Procesador Intel® Core™ Ultra 5 225</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://www.scan.co.uk/images/products/xlarge/3665920-xl-a.jpg" alt="" >
+                    <p>Procesador Intel® Core™ Ultra 7 265</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="procesador">
+                    <img src="https://grupodecme.com/cdn/shop/files/29c0e32f-5cdf-4bd7-8558-6d1edb782953_700x700.jpg?v=1731312640" alt="" >
+                    <p>Procesador Intel® Core™ Ultra 9 285K</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/6b58ca69ca8ede4cc42e6772256b9c48/Product/41736/webp/400" alt="" >
+                    <p>Placa madre Gigabyte H610M D3 DDR4.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/3be4cc263aeab979d572f5edbe0c8cb7/Product/39625/webp/400" alt="" >
+                    <p>Placa madre Gigabyte H610M D3H DDR4.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/6da706ca13505b912a2b5f643c4af695/Product/38748/webp/400" alt="" >
+                    <p>Placa madre Gigabyte H610M H V3 DDR4.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/b0132ce644c656ccac5dfb34fed3529c/Product/38665/webp/400" alt="" >
+                    <p>Placa madre Gigabyte H610M K V2 DDR5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/44457c2aa3dfcbd1f213f72f6a12636d/Product/38670/webp/400" alt="" >
+                    <p>Placa madre Gigabyte H610M H V2 DDR5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/3b1f7398ad03acbdeafe9689041d61f7/Product/45023/webp/300" alt="" >
+                    <p>Placa madre Gigabyte B760 DS3H WIFI6E GEN5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/6b3a1733cf0e8a333221dad2bd029040/Product/45157/webp/300" alt="" >
+                    <p>Placa madre Gigabyte B760M GAMING X WIFI6E GEN5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/b1f3f93ba0acc51713c6cdec8c7389c1/Product/33879/webp/300" alt="" >
+                    <p>Placa madre Gigabyte B760M GAMING X AX (rev. 1.x)</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/c8bea9ca54dd615051650a4f0c3e0ad2/Product/33902/webp/300" alt="" >
+                    <p>Placa madre Gigabyte B760M GAMING AC (rev. 1.0/1.1)</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/de5e3c449c553f39bf566d7747538824/Product/32326/webp/300" alt="" >
+                    <p>Placa madre Gigabyte Z790 GAMING X AX (rev. 1.x)</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/de07e8d9c279f17978e687178b2e22be/Product/44655/webp/300" alt="" >
+                    <p>Placa madre Gigabyte B760M AORUS ELITE WIFI6E GEN5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/af213fa06e90cd5c7241e086493178c9/Product/39998/webp/300" alt="" >
+                    <p>Placa madre Gigabyte Z790 AORUS XTREME X ICE</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/dee0b0bef844f7dcac99c3569fdf02c8/Product/36669/webp/300" alt="" >
+                    <p>Placa madre Gigabyte Z790 AORUS XTREME X</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://static.gigabyte.com/StaticFile/Image/Global/74e58046f7bdcec6d0fcdc1636d619c2/Product/34355/webp/300" alt="" >
+                    <p>Placa madre Gigabyte Z790I AORUS ULTRA (rev. 1.0)</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://microless.com/cdn/products/9abe243d91eba9d6c26398260b401f06-hi.jpg" alt="" >
+                    <p>Placa madre Asus H610m DDR5.</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://dlcdnwebimgs.asus.com/files/media/59d0c844-b8e9-49e1-899c-6d9574843037/v1/features/images/large/s7/q-antenna.webp" alt="" >
+                    <p>Placa madre Asus Prime B860-Plus Wifi DDR5</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="placamadre">
+                    <img src="https://elnstore.com/cdn/shop/files/bH610MHC_2_BOX_BtAr.png?v=1749310691" alt="" >
+                    <p>Placa madre Biostar H610m DDR4.</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="ram">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/1476_620.jpg" alt="" >
+                    <p>RAM Kingston DDR4 DIMM, 3200MT/s 4GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>		
+                <div class="product-item" category="ram">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/1476_620.jpg" alt="" >
+                    <p>RAM Kingston DDR4 DIMM, 3200MT/s 8GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="ram">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/1476_620.jpg" alt="" >
+                    <p>RAM Kingston DDR4 DIMM, 3200MT/s 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="ram">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/1476_620.jpg" alt="" >
+                    <p>RAM Kingston DDR4 DIMM, 3200MT/s 32GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/DDR4_Non-ECC_Unbuffered_SODIMM_2R_X8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston DDR4 SODIMM, 3200MT/s 4GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/DDR4_Non-ECC_Unbuffered_SODIMM_2R_X8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston DDR4 SODIMM, 3200MT/s 8GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/DDR4_Non-ECC_Unbuffered_SODIMM_2R_X8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston DDR4 SODIMM, 3200MT/s 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/DDR4_Non-ECC_Unbuffered_SODIMM_2R_X8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston DDR4 SODIMM, 3200MT/s 32GB </p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://compuciber.com/wp-content/uploads/2024/12/memoria-ram-kingston-16gb-ddr5-4800mhz-pc5-38400-compuciber.jpg" alt="" >
+                    <p>RAM Kingston DDR5 DIMM, 5600MT/s 8GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="ram">
+                    <img src="https://compuciber.com/wp-content/uploads/2024/12/memoria-ram-kingston-16gb-ddr5-4800mhz-pc5-38400-compuciber.jpg" alt="" >
+                    <p>RAM Kingston DDR5 DIMM, 5600MT/s 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://compuciber.com/wp-content/uploads/2024/12/memoria-ram-kingston-16gb-ddr5-4800mhz-pc5-38400-compuciber.jpg" alt="" >
+                    <p>RAM Kingston DDR5 DIMM, 5600MT/s 32GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>			
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Pro_RDIMM_Black_DDR5_1Rx8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade Pro DDR5 DIMM 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Pro_RDIMM_Black_DDR5_1Rx8_1-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade Pro DDR5 DIMM 32GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Silver_White_RGB_CUDIMM_DDR5_2_angle-sm.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade DDR5 RGB 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Silver_White_RGB_CUDIMM_DDR5_2_angle-sm.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade DDR5 RGB 24GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Silver_White_RGB_CUDIMM_DDR5_2_angle-sm.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade DDR5 RGB 32GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Renegade_Silver_White_RGB_CUDIMM_DDR5_2_angle-sm.jpg" alt="" >
+                    <p>RAM Kingston Fury Renegade DDR5 RGB 48GB </p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Impact_Black_DDR5_1Rx8_1_angle-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston Fury Impact DDR5 8GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Impact_Black_DDR5_1Rx8_1_angle-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston Fury Impact DDR5 16GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ram">
+                    <img src="https://media.kingston.com/kingston/product/FURY_Impact_Black_DDR5_1Rx8_1_angle-zm-lg.jpg" alt="" >
+                    <p>RAM Kingston Fury Impact DDR5 32GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://etech.com.ni/wp-content/uploads/2024/09/Solido-240gb.png" alt="" >
+                    <p>SSD Kingston 240GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://nomadaware.com.ec/wp-content/uploads/NomadaWare_kingston_a400_480gb_2.5_sata_500mbs_sata_6gbs.png" alt="" >
+                    <p>SSD Kingston 480GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://www.venex.com.ar/products_images/1638808646_ssd.png" alt="" >
+                    <p>SSD Kingston 960GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://bestmart.cl/cdn/shop/files/disco-interno-ssd-kingston-nv2-250gb-m2-pcie-40-1931865_800x.jpg?v=1758550979" alt="" >
+                    <p>SSD M.2 NV2 Kingston 250GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://partesinformaticas.com/wp-content/uploads/2023/03/nv2500.jpg" alt="" >
+                    <p>SSD M.2 NV2 Kingston 500GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://computerlounge.co.nz/cdn/shop/files/aea725cb6d81689f601c595eebccd2ae0a035371_Kingston_NV_1TB_3.png?v=1726103382&width=1214" alt="" >
+                    <p>SSD M.2 NV3 Kingston 1TB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://webapi3.adata.com/storage/product/su650_600x600_0628.png" alt="" >
+                    <p>SSD Adata Ultimate SU650 240GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="almacenamiento">
+                    <img src="https://webapi3.adata.com/storage/product/su650_600x600_0628.png" alt="" >
+                    <p>SSD Adata Ultimate SU650 512GB</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="monitor">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/latin/lc24f390fhnxza/gallery/latin-24-essential-curved-monitor-with-the-deeply-immersive-viewing-experience-lc24f390fhnxza-540225917?$684_547_PNG$" alt="" >
+                    <p>Monitor Samsung LED curvo de 24 Pulgadas VGA HDMI Modelo: LC24F390FHNXZA</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="monitor">
+                    <img src="https://sis.omega.com.do/ProductImages/eb40e538-a175-4506-ad04-db189eee1398.png" alt="" >
+                    <p>Monitor HikVision 24 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="monitor">
+                    <img src="https://www.tienda.cyh-technology.com.co/wp-content/uploads/2024/10/Monitor-HP-P22h-G5_-54_6-cm-_21_5-png.webp" alt="" >
+                    <p>Monitor HP 22 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptoplenovo">
+                    <img src="https://techsolutionsnicaragua.com/wp-content/uploads/2025/06/laptopsnuevasjunio_Lenovo-1-15IAU7-.png" alt="" >
+                    <p>Laptop Lenovo IdeaPad 1 15IAU7, CPU Intel I5-1235U, RAM 8GB, Almacenamiento 512GB SSD, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptoplenovo">
+                    <img src="https://imagedelivery.net/JAV112JY973Crznn4xb8Sg/28508d74-e948-4095-0589-8704ced4c100/mobile" alt="" >
+                    <p>Laptop Lenovo IdeaPad Slim 3 15IAN8, CPU Intel Core I3-N305, RAM 8GB, Almacenamiento 128GB, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>			
+                <div class="product-item" category="laptoplenovo">
+                    <img src="https://imagedelivery.net/JAV112JY973Crznn4xb8Sg/28508d74-e948-4095-0589-8704ced4c100/mobile" alt="" >
+                    <p>Laptop Lenovo IdeaPad Slim 3 15IRU9, CPU Intel Core 5-120U, RAM 8GB, Almacenamiento 512GB, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="laptophp">
+                    <img src="https://panel.tupi.com.py//public/0f1f10-lop.jpg" alt="" >
+                    <p>Laptop HP 14-DQ5009NR, CPU Intel I3-1215U, RAM 8GB DDR4, Almacenamiento 256GB SSD, Pantalla HD 14 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptophp">
+                    <img src="https://i5.walmartimages.com/asr/8718114d-daaf-443a-945e-333d094ada42.5ff47ea57640a940d24efe752f8bbd2c.jpeg" alt="" >
+                    <p>Laptop HP 15-FD0075TG, CPU Intel I5-1335U, RAM 8GB DDR4, Almacenamiento 512GB SSD, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptophp">
+                    <img src="https://hp.widen.net/content/sgqtogy6xp/webp/sgqtogy6xp.png?amp%3Bh=430&amp%3Bdpi=72&amp%3Bcolor=ffffff00&w=275" alt="" >
+                    <p>Laptop HP VICTUS 15-FA1163DX, CPU Intel I7-12650H, RAM 16GB DDR4, Almacenamiento 512GB SSD, RTX 4050 6GB, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptopdell">
+                    <img src="https://elexcell.com/wp-content/uploads/2024/04/dell_inspiron_3520_1024x1024.png" alt="" >
+                    <p>Laptop Dell Inspiron 15 3520, CPU Intel I3-1215U, RAM 8GB DDR4, Almacenamiento 512GB SSD, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="laptopdell">
+                    <img src="https://compubetel.com/wp-content/uploads/2025/10/21211_18980.jpg" alt="" >
+                    <p>Laptop Dell 15 DC15250, CPU Intel I5-1334U, RAM 8GB DDR4, Almacenamiento 512GB SSD, Pantalla FHD 15.6 Pulgadas</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/050579681ebb9915312e7dd557dd6d97a852ba3e/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_L1250" alt="" >
+                    <p>Impresora Epson L1250</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/70422a326238f1a8e96c405befdc75da03b052bd/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_L3250_L3251" alt="" >
+                    <p>Impresora Epson L3250</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/daf3b49df239a3b0b886267b36419a9db26ea228/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_L4260" alt="" >
+                    <p>Impresora Epson L4260</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/0a189a49043b41aba35b6dac8dd24d767849486f/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-pro_2025_fg_l4360" alt="" >
+                    <p>Impresora Epson L4360</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/ee51b77056af283557eac4966cbd7c8022982e54/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_L14150" alt="" >
+                    <p>Impresora Epson L14150</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/1d5df6a8aaefe600a56b8a0079aee0d5a68517a9/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_L5590_ES" alt="" >
+                    <p>Impresora Epson L5590</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/de3252a2eb34f12ce2b418ddb94db5bdf43f27d0/515Wx515H?use=productpictures&hybrisId=B2C&assetDescr=M1120_690x460_1" alt="" >
+                    <p>Impresora Epson EcoTank M1120</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/79e7f11254cd310c2af778e964686934fe6c2e0a/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_M2120" alt="" >
+                    <p>Impresora Epson EcoTank M2120</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/89ad7068fb7ba857c5d9836a2e535be282de1887/515Wx515H?use=productpictures&hybrisId=B2C&assetDescr=M2170_690x460_1-botellas" alt="" >
+                    <p>Impresora Epson EcoTank M2170</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/e59e49179acbd28e7fc775546d6a0dfd6e01f22c/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-product-tile_M3170" alt="" >
+                    <p>Impresora Epson EcoTank M3170</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/507ab5e6672753ca0fd877cdd0b895576dc83feb/original?use=productpictures&hybrisId=B2C&assetDescr=latin-ecotank-photo_fg-l8050" alt="" >
+                    <p>Impresora Epson EcoTank L8050</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/bcd513f511704b99dc2ae3eec0ef853797e0a84c/515Wx515H?use=productpictures&hybrisId=B2C&assetDescr=LQ-590II_690x460_1" alt="" >
+                    <p>Impresora Epson LQ-5590II Impresora matriz de puntos</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoraepson">
+                    <img src="https://mediaserver.goepson.com/ImConvServlet/imconv/e7dfe3741b33f402b4f24e91f4d7d1c5913fc0a1/515Wx515H?use=productpictures&hybrisId=B2C&assetDescr=fx890ii_hero-paper_690x460" alt="" >
+                    <p>Impresora Epson FX-890II Impresora matriz de puntos</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://soytechno.com/wp-content/uploads/2024/07/3ba396_8736215235cf48ae9f3a312c7e562d37mv2.webp" alt="" >
+                    <p>Tinta Epson 504 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://mail.zonadigitalsv.com/product/010343938755/image" alt="" >
+                    <p>Tinta Epson 504 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://acosa.com.hn/wp-content/uploads/2025/06/T504320-AL.webp" alt="" >
+                    <p>Tinta Epson 504 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://walmartni.vtexassets.com/arquivos/ids/351187/Botella-Tinta-Epson-Amarillo-T504-1-220.jpg?v=638420647671900000" alt="" >
+                    <p>Tinta Epson 504 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://s3.amazonaws.com/online.storage/LBJRDIN/Products/EPS-T544120-AL.jpg" alt="" >
+                    <p>Tinta Epson 544 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://s3.amazonaws.com/online.storage/LBJRDIN/Products/EPS-T544220-AL.jpg" alt="" >
+                    <p>Tinta Epson 544 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://s3.amazonaws.com/online.storage/LBJRDIN/Products/EPS-T544420-AL.jpg" alt="" >
+                    <p>Tinta Epson 544 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://s3.amazonaws.com/online.storage/LBJRDIN/Products/EPS-T544320-AL.jpg" alt="" >
+                    <p>Tinta Epson 544 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://sycomnic.com/wp-content/uploads/664-og-510x510.png" alt="" >
+                    <p>Tinta Epson 664 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://sycomnic.com/wp-content/uploads/WhatsApp-Image-2025-09-04-at-12.54.26-510x510.jpeg" alt="" >
+                    <p>Tinta Epson 664 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://sycomnic.com/wp-content/uploads/664-og-y.png" alt="" >
+                    <p>Tinta Epson 664 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://sycomnic.com/wp-content/uploads/664-og-m-510x510.png" alt="" >
+                    <p>Tinta Epson 664 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://casacuesta.com/media/catalog/product/cache/fde49a4ea9a339628caa0bc56aea00ff/3/3/3333826-1.jpg" alt="" >
+                    <p>Impresora Canon PIXMA G1110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.shopper.com.gt/wp-content/uploads/2024/10/10-Impresora-PIXMA-G2110-CANON-1.jpg" alt="" >
+                    <p>Impresora Canon PIXMA G2110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://plazavea.vteximg.com.br/arquivos/ids/32260912-418-418/20181808-2.jpg" alt="" >
+                    <p>Impresora Canon PIXMA G3110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://media.digitalife.com.mx/products/26929/6459a4bf6b268.webp" alt="" >
+                    <p>Impresora Canon PIXMA G4100</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://supricom.com.ve/wp-content/uploads/2022/09/2021-08-10_media_file-iov__bsCImv9B33QBucFVLk31NQinX1V4hl.jpeg" alt="" >
+                    <p>Impresora Canon PIXMA G4110 WIFI</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://platino.com.gt/image/cache/catalog/product/680356c5ae6e7_53294-1000x1000.jpg.webp" alt="" >
+                    <p>Tinta Canon GI-190 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://coolboxmx.vtexassets.com/arquivos/ids/159797/GI-190C_1.jpg?v=638635040835200000" alt="" >
+                    <p>Tinta Canon GI-190 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://coolboxpe.vtexassets.com/arquivos/ids/206545-800-800?v=637823558153800000&width=800&height=800&aspect=true" alt="" >
+                    <p>Tinta Canon GI-190 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://promart.vteximg.com.br/arquivos/ids/7899135-1000-1000/imageUrl_1.jpg?v=638464583155400000" alt="" >
+                    <p>Tinta Canon GI-190 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.canon.com.mx/datacenter/image/resize-center/800x800/imagenesproducto/fichero/4910_PIXMA_G2160_02.jpg/" alt="" >
+                    <p>Impresora Canon PIXMA G2160</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.canon.com.mx/datacenter/image/resize-center/800x800/imagenesproducto/fichero/5521_P_G2170_02.png/" alt="" >
+                    <p>Impresora Canon PIXMA G2170</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.canon.com.mx/datacenter/image/resize-center/800x800/imagenesproducto/fichero/4919_PIXMA_G3160_02.jpg/" alt="" >
+                    <p>Impresora Canon PIXMA G3160</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.canon.com.mx/datacenter/image/resize-center/800x800/imagenesproducto/fichero/5554_PIXMA_G3170_01B.png/" alt="" >
+                    <p>Impresora Canon PIXMA G3170</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://api.zonadigitalsv.com/storage/products/imagen_generada64750a6d796be.jpg" alt="" >
+                    <p>Tinta Canon GI-11 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://www.imeqmo.com/web/image/1203115/1.1-min.jpg?access_token=68ecd2b7-13dd-4605-81af-b3afbdc69559" alt="" >
+                    <p>Tinta Canon GI-11 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://api.zonadigitalsv.com/storage/products/imagen_generada64750a6d8c0fa.jpg" alt="" >
+                    <p>Tinta Canon GI-11 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://www.imeqmo.com/web/image/1203256/1.1-min.jpg?access_token=7bc9fd0e-cc7a-4574-9e0d-24e2cf0afb34" alt="" >
+                    <p>Tinta Canon GI-11 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.ditinformatica.com.uy/imgs/productos/_original_13097.jpg" alt="" >
+                    <p>Impresora Canon PIXMA GM4010</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://s7d1.scene7.com/is/image/canon/6884C002AA_GX5120_3?fmt=webp-alpha&wid=280" alt="" >
+                    <p>Impresora Canon MAXIFY GX5110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://s7d1.scene7.com/is/image/canon/6882C002AA_GX6120_3?fmt=webp-alpha&wid=280" alt="" >
+                    <p>Impresora Canon MAXIFY GX6110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://s7d1.scene7.com/is/image/canon/6880C002AA_GX7120_3?fmt=webp-alpha&wid=280" alt="" >
+                    <p>Impresora Canon MAXIFY GX7110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://acosa.com.hn/wp-content/uploads/2024/04/4408C001AA.webp" alt="" >
+                    <p>Tinta Canon GI-16 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://tecnonacho.com/wp-content/uploads/2023/01/10381.webp" alt="" >
+                    <p>Tinta Canon GI-16 Color Cian</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://www.supricom.com.pa/wp-content/uploads/2022/10/4419C001AA-CANON-GI16M-1000X1000-2.webp" alt="" >
+                    <p>Tinta Canon GI-16 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://oechsle.vteximg.com.br/arquivos/ids/22219456-1000-1000/imageUrl_1.jpg?v=638940333336800000" alt="" >
+                    <p>Tinta Canon GI-16 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://www.canon.com.pa//uploads/2023-06-08_media_file-iov__w7aMVrFjNGeRy4RyqrZUNkwkK1Bce6.jpeg" alt="" >
+                    <p>Impresora Canon imageCLASS LBP6030w</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://s7d1.scene7.com/is/image/canon/3514C004-imageclass-mf445dw-primary?fmt=webp-alpha&wid=280" alt="" >
+                    <p>Impresora Canon imageCLASS MF445dw</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="impresoracanon">
+                    <img src="https://s7d1.scene7.com/is/image/canon/3630C002-imagerunner-1643i-primary?fmt=webp-alpha&wid=280" alt="" >
+                    <p>Impresora Canon imageRUNNER 1643i</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="consumibles">
+                    <img src="https://sicsa.com.ni/wp-content/uploads/2025/04/3291_1969.jpg" alt="" >
+                    <p>Toner Generico marca APS T06</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="impresorahp">
+                    <img src="https://www.hp.com/content/dam/sites/worldwide/printers/smart-tank-latam/1745315_updates/HP%20Smart%20Tank%20520@3x.png" alt="" >
+                    <p>Impresora HP Smart Tank 580</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="impresorahp">
+                    <img src="https://www.hp.com/content/dam/sites/worldwide/printers/smart-tank-latam/HP%20Smart%20Tank%20615@2x1.png" alt="" >
+                    <p>Impresora HP Smart Tank 530</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresorahp">
+                    <img src="https://www.hp.com/content/dam/sites/worldwide/printers/smart-tank-latam/HP%20Smart%20Tank%20750@2x.png" alt="" >
+                    <p>Impresora HP Smart Tank 750</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="impresorahp">
+                    <img src="https://www.hp.com/content/dam/sites/worldwide/printers/smart-tank-latam/HP%20Smart%20Tank%20790@2x.png" alt="" >
+                    <p>Impresora HP Smart Tank 790</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://www.officedepot.com.mx/medias/88953.jpg-1200ftw?context=bWFzdGVyfHJvb3R8MTUxNjY3fGltYWdlL2pwZWd8YURZeEwyZ3pNaTg1TmpreE1qRTFOREk1TmpZeUxtcHdad3w2OWU5ZTIwOTY3YzE1YzJkMDI3NTc2ZGQzNDRlNGFlNjk5NWJhZmYxYzVlZTBkZDlhNWMwYjg3NGU5MDk5MzUw" alt="" >
+                    <p>Tinta HP GT53 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://co-media.hptiendaenlinea.com/catalog/product/m/0/m0h56al_imagenprincipalsintexto.jpg" alt="" >
+                    <p>Tinta HP GT52 Color Amarillo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://cl-media.hptiendaenlinea.com/catalog/product/m/0/m0h54al_imagenprincipalsintexto.jpg" alt="" >
+                    <p>Tinta HP GT52 Color Cyan</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="consumibles">
+                    <img src="https://co-media.hptiendaenlinea.com/catalog/product/m/0/m0h55al_imagenprincipalsintexto.jpg" alt="" >
+                    <p>Tinta HP GT52 Color Magenta</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://images.cebuanalube.com/images/tp-link-archer-c24-ac750-dual-band.jpg" alt="" >
+                    <p>Router tp-link Archer C24, AC750 Dual Band</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://images.cebuanalube.com/images/tp-link-archer-c50-ac1200.jpg" alt="" >
+                    <p>Router tp-link Archer C50, AC1200 Dual Band</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://thumb.pccomponentes.com/w-530-530/articles/12/124966/1.jpg" alt="" >
+                    <p>Repetidor wifi tp-link 300Mbps modelo TL-WA855RE</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://thumb.pccomponentes.com/w-530-530/articles/12/124966/1.jpg" alt="" >
+                    <p>Repetidor wifi tp-link AC1200 modelo RE305</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://www.manualpdf.es/thumbs/products/l/1366654-tp-link-re315.webp" alt="" >
+                    <p>Repetidor wifi tp-link AC1200 modelo RE315</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://jaltechsas.com/wp-content/uploads/2022/11/SWICHE-LS1005-TP-LINK_40152_LS1005_1.png" alt="" >
+                    <p>Switch tp-link de Escritorio de 5 puertos 10/100Mbps modelo LS1005</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://www.liberotech.it/media/catalog/product/cache/a58970600f9f6823427dcb3961aee4c7/_/m/_m_q_mq2.webp" alt="" >
+                    <p>Switch tp-link de Escritorio de 8 puertos 10/100Mbps modelo TL-SF1008D</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="internet">
+                    <img src="https://www.mfcomm.co.uk/wp-content/uploads/2022/04/TP-Link-TL-SX1008.jpeg" alt="" >
+                    <p>Switch tp-link montado en Rack de 8 puertos 10G modelo TL-SX1008</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/000861f57a909bb4fe5af77caec952de_middle.png" alt="" >
+                    <p>Camara Ezviz Wifi H7c Dual 2K⁺</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/728642a8ede01c201b5f0f2dd1c4960f_middle.png" alt="" >
+                    <p>Camara Ezviz Wifi H6c Pro, 1080p, 2K⁺</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/98853e93607e47bb3847e4b9a6ab80ad_middle.png" alt="" >
+                    <p>Camara Ezviz Wifi H8c, 1080p, 2K, 2K⁺</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/24d6b49753f2dd6b895e7076cd6cce6c_middle.png" alt="" >
+                    <p>Camara Ezviz Wifi H9c Dual, 2K, 3K</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/666fb8042746f72c2fb19c948a107b59_middle.png" alt="" >
+                    <p>Camara Ezviz Wifi H3c 2K⁺</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/1fd1b589d4dcca5f5deef341850a2763_middle.png" alt="" >
+                    <p>Cerradura Inteligente DL03 Pro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/442185d436bde147b3f064469c7f068f_middle.jpg" alt="" >
+                    <p>Video portero Inteligente HP7</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/e7306073619952567fd52a8f733af36d_middle.png" alt="" >
+                    <p>Pantalla Inteligente SD7</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="tapo">
+                    <img src="https://ntdigital.ar/images/product_image/18633/0?fit=fill&w=1024&h=512" alt="" >
+                    <p>Camara Tapo wifi modelo C310</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hikvision">
+                    <img src="https://www.communica.co.za/cdn/shop/products/hkv-ds-7116hghi-m1-966391.webp?v=1699368124" alt="" >
+                    <p>DVR Hikvision DS-7116HGHI-M1/T 16-ch 1080P Lite Mini 1U H.265 </p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hikvision">
+                    <img src="https://m.media-amazon.com/images/I/51IqXqEcWyL._AC_UF894,1000_QL80_.jpg" alt="" >
+                    <p>DVR iDS-7108HQHI-M1/S 8-ch 1080P Mini 1U H.265 AcuSense </p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hikvision">
+                    <img src="https://hikvisioncolombia.com/wp-content/uploads/2019/03/DS7108HQHIK1-300x300.png" alt="" >
+                    <p>DVR DS-7108HGHI-M1 8-ch 720p Mini 1U H.265</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/FVP-1201B_01.jpg" alt="" >
+                    <p>Forza Protector de voltaje 900J/1800W, 1 sld, giro de 350°, tempor-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/FVP-1201N_01.jpg" alt="" >
+                    <p>Forza Protector de voltaje 900J/1800W, 1 sld, giro de 350°, RJ45-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/NT-511_01.jpg" alt="" >
+                    <p>Forza UPS interactiva 500VA/250W, 6 slds, RJ11, torre comp-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/NT-751_01.jpg" alt="" >
+                    <p>Forza UPS interactiva 750VA/375W, 6 slds, RJ11, torre comp-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/HT-750LCD_01.jpg" alt="" >
+                    <p>Forza UPS interactiva 750VA/450W, 12 slds, coax, USB, sobremesa-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/HT-1000LCD_01.jpg" alt="" >
+                    <p>Forza UPS interactiva 1000VA/600W, 12 slds, coax, USB, sobremesa-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/FX-1500LCD_01.jpg" alt="" >
+                    <p>Forza UPS interactiva 1500VA/840W, 8 slds, giga & coax, torre-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/ST-1001_Land.jpg" alt="" >
+                    <p>Forza UPS Inteligente 1000VA/600W Torre Compacta, 10 salidas, LCD, Puertos USB de Carga, Software-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="forza">
+                    <img src="https://forza-ups-frontend.s3.amazonaws.com/media/img/ST-1501_Land.jpg" alt="" >
+                    <p>Forza UPS Inteligente 1500VA/600W Torre Compacta, 10 salidas, LCD, Puertos USB de Carga, Software-120V</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cdp">
+                    <img src="https://cdpenergy.com/Content_Elements/Carousel_Images/PRID-36-Ref.jpg" alt="" >
+                    <p>UPS interactivo de 1500VA de onda sinusoidal pura con baterías internas, regulador de voltaje Supresor de sobre tensión con 8 toma corrientes NEMA 5-15. Ideal para PC para juegos de alta gama</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="tripplite">
+                    <img src="https://assets.tripplite.com/medium-image/avr700u-front-m.jpg" alt="" >
+                    <p>UPS Interactivo de 700VA 350W - 8 Tomacorrientes NEMA 5-15R, AVR, 120V, 50Hz / 60Hz, USB, Instalación en pared o escritorio</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="tripplite">
+                    <img src="https://assets.tripplite.com/medium-image/avr750u-front-m.jpg" alt="" >
+                    <p>UPS Interactivo de 750VA 450W - 12 Tomacorrientes NEMA 5-15R, AVR, 120V, 50Hz / 60Hz, USB, Instalación en pared o escritorio</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="tripplite">
+                    <img src="https://assets.tripplite.com/medium-image/smart1500lcdt-front-m.jpg" alt="" >
+                    <p>UPS SmartPro de onda sinusoidal interactivo de 1500 VA 900 W 120 V - 10 Tomacorrientes, LCD, USB, Torre</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hikvision">
+                    <img src="https://acosa.com.hn/wp-content/uploads/2024/08/DS-UPS1000-xO-STD.webp" alt="" >
+                    <p>UPS HikVision DS-UPS1000VA</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sw">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-WT-6062-web1_db4b183f-e129-4ea6-a26b-5820366fd962_400x.jpg?v=1753735347" alt="" >
+                    <p>SkeiWatch C62, ARG-WT-6062BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sw">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-WT-6040-Web1-Gun_5d1cdcf8-87cb-49d6-b496-d3064e0708b1_1024x1024.jpg?v=1753809354" alt="" >
+                    <p>SkeiWatch S40, ARG-WT-6040</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sw">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-WT-6080-1_400x.jpg?v=1731621803" alt="" >
+                    <p>SkeiWatch C80, ARG-WT-6080BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sw">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-WT-6030-14_132375a9-6cb4-4f98-8d74-9ca1304b26c4_400x.jpg?v=1728671721" alt="" >
+                    <p>SkeiWatch C30, ARG-WT-6030</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://office2000.com.uy/cache/office%202000/productos/1/gh_1581-550x550.jpg" alt="" >
+                    <p>Ratón Logitech POP, Ratón inalámbrico con emojis personalizables</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m171/gallery/m171-gallery-black-1.png" alt="" >
+                    <p>Ratón Logitech inalámbrico M170 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m171/gallery/m171-mouse-top-view-blue.png" alt="" >
+                    <p>Ratón Logitech inalámbrico M170 Color Azul</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m171/gallery/m171-mouse-top-view-red.png" alt="" >
+                    <p>Ratón Logitech inalámbrico M170 Color Rojo</p>
+                    <a href="#">COTIZAR</a>
+                </div>		
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m171/gallery/m171-mouse-top-view-bluegrey.png" alt="" >
+                    <p>Ratón Logitech inalámbrico M170 Color Celeste</p>
+                    <a href="#">COTIZAR</a>
+                </div>	
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m171/gallery/m171-mouse-top-view-rose.png" alt="" >
+                    <p>Ratón Logitech inalámbrico M170 Color Rosado</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="myt">
+                    <img src="https://s3.wasabisys.com/assets.todotintasysuministros.com/assets/media/productos/345_extraLargeThumb.webp" alt="" >
+                    <p>Ratón Genius alambrico DX-110 Color Azul</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.idminformatica.com.ar/wp-content/uploads/2022/11/1-60.jpg" alt="" >
+                    <p>Ratón Genius alambrico DX-110 Color Verde</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://cdnx.jumpseller.com/portalmayorista/image/42837118/resize/719/539?1701309675" alt="" >
+                    <p>Ratón Genius alambrico DX-110 Color Negro</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://tecnocomphn.com/wp-content/uploads/2024/06/161186908531010116102-3.jpg" alt="" >
+                    <p>Ratón Genius alambrico DX-110 Color Blanco</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV6fvyTMqqbTrFAIFYbT6vo16mejYANYrYaA&s" alt="" >
+                    <p>Ratón Genius alambrico DX-110 Color Rojo</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/combos/mk235/gallery/mk235-gallery-01-new.png" alt="" >
+                    <p>Combo de teclado y ratón inalámbricos Logitech MK235</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/combos/mk250/gallery/delorean-gallery-images/us/mk-250-graphite-top-view-1-us-updated.png" alt="" >
+                    <p>Combo inalámbrico compacto Logitech MK250 Bluetooth®</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-SL-0016BK--WEB9_7187bef3-9b5b-4a96-ab8b-ccf22af6e667_400x.jpg?v=1731425628" alt="" >
+                    <p>Funda urbana para portátiles de 13 y 14 pulgadas ARG-SL-0016BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-SL-0018BK-WEB9_400x.jpg?v=1731364131" alt="" >
+                    <p>Funda urbana para portátil: compatible con portátiles de hasta 15,6" ARG-SL-0018BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-SL-0014B-3_400x.jpg?v=1601391362" alt="" >
+                    <p>Funda antigolpes para portátil de 14" ARG-SL-0014B</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-SL-0015B-3_400x.jpg?v=1601393198" alt="" >
+                    <p>Funda para portátil de 15,6" antigolpes ARG-SL-0015B</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BG-6772BK-4_400x.jpg?v=1583432774" alt="" >
+                    <p>Funda esencial para portátil de 15,6" ARG-BG-6772BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>				
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BP-6784BK_400x.jpg?v=1579904317" alt="" >
+                    <p>Funda para portátil Venture de 15,6" ARG-BG-6784BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BG-6780BK_400x.jpg?v=1572903302" alt="" >
+                    <p>Funda profesional para portátil de 15,6" ARG-BG-6780BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-bg-6782_basep_1_37c0ceba-ab5c-4ac2-a55a-a1d6ecdc4edc_400x.jpg?v=1499720886" alt="" >
+                    <p>Funda para portátil Florencia ARG-BG-6782</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BP-1342BK_400x.jpg?v=1583528305" alt="" >
+                    <p>Mochila para portátil Stark de 14,1" ARG-BP-1342</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BP-0718BK_400x.jpg?v=1580402780" alt="" >
+                    <p>Mochila para portátil Elevation de 15,6", color negro ARG-BP-0718BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-BP-0728BK_1024x1024.jpg?v=1583528598" alt="" >
+                    <p>Mochila para portátil Visionaire de 15,6" ARG-BP-0728</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AV-5110-1_400x.jpg?v=1636653758" alt="" >
+                    <p>Splitter HDMI de 2 canales ARG-AV-5110</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AV-5114-1_400x.jpg?v=1637014433" alt="" >
+                    <p>Splitter HDMI de 4 canales ARG-AV-5114</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AV-5118-1_400x.jpg?v=1636654654" alt="" >
+                    <p>Splitter HDMI de 8 canales ARG-AV-5118</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AV-5125-1_400x.jpg?v=1637014586" alt="" >
+                    <p>Switch HDMI de 5 canales ARG-AV-5125</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cb-0055-web_400x.jpg?v=1499720520" alt="" >
+                    <p>Adaptador de cable HDMI a VGA ARG-CB-0055</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0056_400x.jpg?v=1528318696" alt="" >
+                    <p>Adaptador de cable DisplayPort a VGA ARG-CB-0056</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0059_400x.jpg?v=1537297592" alt="" >
+                    <p>Adaptador de cable DisplayPort macho a HDMI hembra ARG-CB-0059</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0043_400x.jpg?v=1537297292" alt="" >
+                    <p>Adaptador de cable tipo C macho a VGA hembra ARG-CB-0043</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0060-SL_400x.jpg?v=1537297769" alt="" >
+                    <p>Adaptador de cable tipo C macho a HDMI hembra ARG-CB-0060</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0045_400x.jpg?v=1573061673" alt="" >
+                    <p>Adaptador de cable USB 2.0 a RJ45 de 100 Mbps ARG-CB-0045</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0029_400x.jpg?v=1572640165" alt="" >
+                    <p>Adaptador de cable macho de 3,5 mm a hembra doble de 3,5 mm ARG-CB-0029</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-1321_400x.jpg?v=1572903795" alt="" >
+                    <p>Adaptador DVI-I macho a VGA hembra ARG-CB-1321</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0035_new_400x.jpg?v=1519401004" alt="" >
+                    <p>Cable M/M de 3,5 mm a 3,5 mm - 3 pies/1 m ARG-CB-0035</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0089_400x.jpg?v=1573155381" alt="" >
+                    <p>Cable RCA a RCA M/M - 1,5 m ARG-CB-0089</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cb-0041_web_400x.jpg?v=1533563747" alt="" >
+                    <p>Cable USB 3.0 Tipo-C a Tipo-A de 3 pies ARG-CB-0041</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cb-0036_basep1_400x.jpg?v=1499720984" alt="" >
+                    <p>Cable USB A/B para impresora de 6 pies ARG-CB-0036</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-0046_edb92abd-cb6c-4663-b975-9383258c5e12_400x.jpg?v=1572901034" alt="" >
+                    <p>Cable USB 3.0 macho a hembra - 1,8m ARG-CB-0046</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cb-0075_basep1_400x.jpg?v=1499720703" alt="" >
+                    <p>Cable de monitor VGA de 1,8 m ARG-CB-0075</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CB-1870-3_400x.jpg?v=1588009079" alt="" >
+                    <p>Cable HDMI a HDMI M/M - 1,5 m ARG-CB-1870</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-UB-0190_400x.jpg?v=1727962398" alt="" >
+                    <p>Hub with Switches One Axess 2-in-1 Type-C/USB 3.0 to 4-Port USB 3.0 ARG-UB-0190</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-UB-0181_400x.jpg?v=1625673048" alt="" >
+                    <p>One Axess 3-in-1 Type-C Hub ARG-UB-0181</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-UB-0183-2_400x.jpg?v=1635277039" alt="" >
+                    <p>One Axess 5-in-1 Type-C Hub ARG-UB-0183</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-UB-0185_400x.jpg?v=1657029856" alt="" >
+                    <p>One Axess 5-in-1 Type-C Hub with 60W PD Passthrough ARG-UB-0185</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-UB-0093_400x.jpg?v=1656614981" alt="" >
+                    <p>One Axess 8-in-1 Type-C Hub with 100W PD Passthrough ARG-UB-0093</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AC-1032_400x.jpg?v=1549898508" alt="" >
+                    <p>HD Enclosure 2.5 Sata 3.0 tool-free ARG-AC-1032</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AC-1033-1_400x.jpg?v=1574461775" alt="" >
+                    <p>2.5 SATA Hard Drive Enclosure USB 3.0 ARG-AC-1033</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AC-1038_400x.jpg?v=1649784684" alt="" >
+                    <p>M.2 NVME PCI-E SSD Enclosure Type-C ARG-AC-1038</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CR-0088_400x.jpg?v=1499720382" alt="" >
+                    <p>Universal Card Reader 55-in-1 ARG-CR-0088</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-UB-0088_400x.jpg?v=1499720383" alt="" >
+                    <p>Universal USB HUB 4-Ports ARG-UB-0088</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cf-1584_basep1_1_400x.jpg?v=1601325373" alt="" >
+                    <p>Notebook Blue light Cooling Pad - Large Fan ARG-CF-1584</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-cf-1594_basep1_1_400x.jpg?v=1601328004" alt="" >
+                    <p>Adjustable Notebook Cooling Pad - Large Fan ARG-CF-1594</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-AC-1222_product_400x.jpg?v=1511198278" alt="" >
+                    <p>Mouse Pad Gel 360 ARG-AC-1222</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sye">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-CH-9010BK-1_400x.jpg?v=1616447084" alt="" >
+                    <p>Silla para juegos ERGO FX ARG-CH-9010BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-KB-2055BK-Front_400x.jpg?v=1542749923" alt="" >
+                    <p>Combat Gaming Keyboard KB55 ARG-KB-2055BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-2040BK-Front_400x.jpg?v=1544539876" alt="" >
+                    <p>Combat Gaming Wired USB Mouse MS40 ARG-MS-2040BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-2042BK_400x.jpg?v=1551886557" alt="" >
+                    <p>Combat Gaming Wired USB Mouse MS42 ARG-MS-2042BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-2046BK_400x.jpg?v=1632416589" alt="" >
+                    <p>Combat Gaming Wired USB Mouse MS46 ARG-MS-2046BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-HS-2845BK-SIDE2_400x.jpg?v=1511192867" alt="" >
+                    <p>Combat Gaming Headset with Microphone ARG-HS-2845BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-002_product5_400x.jpg?v=1594234674" alt="" >
+                    <p>Classic Wired USB Mouse ARG-MS-0002</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-0031BK-2_400x.jpg?v=1560262326" alt="" >
+                    <p>2.4GHz Wireless Optical Mouse MS31 ARG-MS-0031</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-MS-033BK_400x.jpg?v=1551112859" alt="" >
+                    <p>Maxi 2.4GHz Wireless Optical Mouse MS33 ARG-MS-0033BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-KB-0203-FRONT-L_400x.jpg?v=1499720326" alt="" >
+                    <p>Ultra Slim Mobile Wireless BT Keyboard ARG-KB-0203</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-KB-7414_400x.jpg?v=1502199628" alt="" >
+                    <p>Classic Spanish Keyboard USB ARG-KB-7414</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="myt">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-kb-7436_basep1_400x.jpg?v=1502288183" alt="" >
+                    <p>Classic Combo Spanish Wireless Keyboard & Mouse ARG-KB-7436</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://www.argomtech.com/cdn/shop/products/arg-sp-1048_basep_400x.jpg?v=1569056187" alt="" >
+                    <p>Altavoces estéreo multimedia Volcano 2.0 ARG-SP-1048</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://www.argomtech.com/cdn/shop/products/ARG-SP-3102BK_400x.jpg?v=1667935476" alt="" >
+                    <p>Altavoz inalámbrico Bluetooth Bazooka Air+ TWS ARG-SP-3102BK</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://www.argomtech.com/cdn/shop/files/ARG-SP-3101BK-2_400x.jpg?v=1705009804" alt="" >
+                    <p>Altavoz inalámbrico Bluetooth Radyon Air Premium con luces LED ARG-SP-3101</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-333_1.jpg" alt="" >
+                    <p>Adaptador con conector HDMI® hembra a hembra XTC-333</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-311_1.jpg" alt="" >
+                    <p>Cable con conector HDMI® macho a HDMI® macho XTC-311</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-363_Landing.jpg" alt="" >
+                    <p>Adaptador de vídeo HDMI® macho a VGA hembra XTC-363</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-378_land.jpg" alt="" >
+                    <p>Adaptador DisplayPort™ macho a HDMI® hembra XTC-378</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/Imagen-landing-XTC-359.jpg" alt="" >
+                    <p>Cable DisplayPort™ macho a HDMI® macho XTC-359</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-307_1.jpg" alt="" >
+                    <p>Cable USB 2.0 A-macho a B-macho, 1,8m XTC-307</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-318_1.jpg" alt="" >
+                    <p>Cable convertidor USB 2.0 macho a puerto paralelo XTC-318</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-565-landing.jpg" alt="" >
+                    <p>Adaptador multipuerto USB Tipo-C® 3-en-1 XTC-565</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-305_Connect.jpg" alt="" >
+                    <p>Cable USB 2.0 macho A a hembra A (1,8m) XTC-301</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-365-Landing.jpg" alt="" >
+                    <p>Cable USB 3.0 macho A a micro-USB macho B XTC-365</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="cablesyadaptadores">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-319_1.jpg" alt="" >
+                    <p>Cable convertidor de USB a serial DEB9 estándar de 9 clavijas XTC-319</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="hub">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTC-391_LAND.jpg" alt="" >
+                    <p>HUB USB 3.0 de 4 puertos XTC-391</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sye">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTF-CD188-IMAGEN%20PRINCIPAL.png" alt="" >
+                    <p>Escritorio multinivel XTF-CD1</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="sye">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTF-OC414_Landing.jpg" alt="" >
+                    <p>Silla ejecutiva de oficina Avignon XTF-OC414</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTA-150_1.jpg" alt="" >
+                    <p>Base con ventilador para laptop XTA-150</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTA-161_Landing.jpg" alt="" >
+                    <p>Base de enfriamiento para laptops de videojuegos Tuuli XTA-161</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTB-507-landing.jpg" alt="" >
+                    <p>Mochila para laptop y accesorios de videojuegos Insurgent XTB-507</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTA-526-landing.jpg" alt="" >
+                    <p>Alfombrilla de gel para mouse con apoyo para la muñeca XTA-526</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="accesoriosparalaptop">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTA-181-landing.jpg" alt="" >
+                    <p>Alfombrilla para mouse Colonist XTA-181</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTH-D701ST-YL_Land.jpg" alt="" >
+                    <p>Audífonos intraaurales con verdadera conexión inalámbrica (TWS) y estuche de carga portátil | Edición Stitch XTH-D701ST-YL</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTH-D701ST-BL_Land.jpg" alt="" >
+                    <p>Audífonos intraaurales con verdadera conexión inalámbrica (TWS) y estuche de carga portátil | Edición Stitch XTH-D701ST-BL</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://xtech-frontend.s3.amazonaws.com/media/img/XTH-M701SG_land.jpg" alt="" >
+                    <p>Audífonos intraaurales con verdadera conexión inalámbrica (TWS) y estuche de carga portátil | Edición Ghost Spider XTH-M701SG</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KSB-230_Land.jpg" alt="" >
+                    <p>Barra de sonido Klip Xtreme Tunebar KSB-00A</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="audio">
+                    <img src="https://klip-xtreme-frontend.s3.amazonaws.com/media/img/KSB-230_Land.jpg" alt="" >
+                    <p>Barra de sonido Klip Xtreme BoomBar KSB-230</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="ezviz">
+                    <img src="https://mfs.ezvizlife.com/35ee9bb7d935285d37f3d2040f6c6ea9_middle.png" alt="" >
+                    <p>Robot Ezviz Aspiradora RC3</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="televisor">
+                    <img src="https://www.tcl.com/usca/content/dam/tcl/product/home-theater/s-series/s2-series/s250g/32S250G-Angled-Left.png" alt="" >
+                    <p>Televisor TCL 32 Pulgadas Modelo 32S250G</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="televisor">
+                    <img src="https://www.tcl.com/usca/content/dam/tcl/products/home-theater/40S350G_Front.png" alt="" >
+                    <p>Televisor TCL 40 Pulgadas Modelo 40S350G</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="televisor">
+                    <img src="https://crdms.images.consumerreports.org/f_auto,w_600/prod/products/cr/models/401744-46-to-52-inch-tvs-hisense-50r6090g-10015140.png" alt="" >
+                    <p>Televisor Hisense 50 Pulgadas Modelo 50R6030N</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="televisor">
+                    <img src="https://m.media-amazon.com/images/I/61nnTgSEdAL._AC_UF350,350_QL80_.jpg" alt="" >
+                    <p>Televisor TCL 55 Pulgadas Modelo 555571G</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+                <div class="product-item" category="refrigerador">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/latin/rf28t5a01s9-ed/gallery/latin-ref-rf28t5a01s9-rf28t5a01s9-ed-466139290?$Q90_1248_936_F_PNG$" alt="" >
+                    <p>Refrigerador Samsung</p>
+                    <a href="#">COTIZAR</a>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 COMPUCITY Soluciones Informáticas. Todos los derechos reservados.</p>
+        <div style="margin-top: 10px;">
+            <a href="politica.html">Política de Privacidad</a> | 
+            <a href="tel:+50588024335">Llamar: 8802-4335</a>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img src="" id="modalImage" alt="Vista previa del producto">
+        </div>
+    </div>
+
+    <div class="float-container">
+        <a href="#" class="float-btn btn-top" id="btnTop" title="Volver arriba">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </a>
+        
+        <a href="https://wa.me/50588024335?text=Hola,%20me%20gustaría%20hacer%20una%20consulta%20general." class="float-btn btn-wa" target="_blank" title="Contactar por WhatsApp">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
+                <path d="M12.031 0C5.385 0 0 5.386 0 12.032c0 2.128.555 4.195 1.61 6.012L.15 23.497l5.602-1.468c1.745.96 3.714 1.466 5.753 1.466 6.648 0 12.034-5.387 12.034-12.033S18.68 0 12.031 0zm0 21.493c-1.802 0-3.56-.484-5.113-1.405l-.367-.217-3.805.998.995-3.714-.238-.378C2.531 15.228 2 13.655 2 12.032 2 6.494 6.495 2 12.031 2s10.034 4.494 10.034 10.032-4.498 10.033-10.034 10.033zm5.503-7.531c-.302-.151-1.787-.882-2.064-.983-.277-.101-.48-.151-.682.151-.202.302-.782.983-.958 1.185-.176.202-.352.227-.654.076-1.503-.761-2.617-1.458-3.626-2.903-.257-.367.257-.341.848-1.517.076-.151.038-.284-.038-.435-.076-.151-.682-1.644-.933-2.253-.245-.595-.494-.515-.682-.524-.176-.008-.378-.008-.58-.008-.202 0-.53.076-.807.378-.277.302-1.059 1.034-1.059 2.52s1.085 2.923 1.236 3.125c.151.202 2.13 3.252 5.158 4.56.721.312 1.284.499 1.724.639.724.23 1.383.197 1.902.12.58-.086 1.787-.73 2.039-1.436.252-.706.252-1.311.176-1.436-.076-.126-.277-.202-.58-.353z"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="fav-modal-overlay" id="favModalOverlay">
+        <div class="fav-modal">
+            <div class="fav-modal-header">
+                <h3>Mis Favoritos</h3>
+                <button id="closeFavsModal" class="close-btn">&times;</button>
+            </div>
+            <div class="fav-modal-body">
+                <div id="favsTableContainer">
+                    <p class="empty-favs-text">No has guardado productos todavía.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
