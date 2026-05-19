@@ -228,6 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(btnTop) btnTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
     // SPLASH SCREEN DE INICIO
-    const splashScreen = document.getElementById('splashScreen');
-    if (splashScreen) { setTimeout(() => { splashScreen.classList.add('hidden'); setTimeout(() => splashScreen.remove(), 600); }, 2000); }
+  //  const splashScreen = document.getElementById('splashScreen');
+   // if (splashScreen) { setTimeout(() => { splashScreen.classList.add('hidden'); setTimeout(() => splashScreen.remove(), 600); }, 2000); }
 });
