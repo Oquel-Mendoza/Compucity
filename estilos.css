@@ -1037,3 +1037,9 @@ footer {
     .fav-action-btn { padding: 7px 10px; font-size: 11px; }
     .fav-thumb { width: 44px; height: 44px; }
 }
+.splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* ¡ESTO ES LO QUE FALTA! Permite que los clicks pasen a los botones de abajo */
+}
+
