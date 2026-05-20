@@ -27,7 +27,7 @@ body {
 }
 
 /* =========================================
-   PANTALLA DE BIENVENIDA (SPLASH SCREEN)
+   PANTALLA DE BIENVENIDA (SPLASH SCREEN CSS-ONLY)
    ========================================= */
 .splash-screen {
     position: fixed;
@@ -40,7 +40,8 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 99999;
-    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+    /* MAGIA PURA: Desaparece automáticamente a los 2.5 segundos SIN usar JavaScript */
+    animation: fadeOutSplash 0.5s ease-out 2.5s forwards;
 }
 
 .splash-logo {
@@ -56,11 +57,12 @@ body {
     100% { transform: scale(0.95); opacity: 0.8; }
 }
 
-.splash-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none; /* Crucial para evitar bloqueos */
+/* Esta animación ejecuta la desaparición blindada */
+@keyframes fadeOutSplash {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; }
 }
+
 
 /* =========================================
    HEADER SÓLIDO Y ZONA DE ACCIONES
