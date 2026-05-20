@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // =========================================
+    // 1. SPLASH SCREEN DE INICIO (HASTA ARRIBA)
+    // =========================================
+    const splashScreen = document.getElementById('splashScreen');
+    if (splashScreen) { 
+        setTimeout(() => { 
+            splashScreen.classList.add('hidden'); 
+            setTimeout(() => splashScreen.remove(), 600); 
+        }, 2000); 
+    }
+
+    // =========================================
+    // 2. LÓGICA DE FAVORITOS Y CATÁLOGO
+    // =========================================
     let favoritesList = [];
 
     // INYECTAR BOTÓN DE CORAZÓN EN CADA TARJETA AUTOMÁTICAMENTE
@@ -14,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heartBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             const title = prod.querySelector('p').innerText;
-            const imgSrc = prod.querySelector('img').src; // Guardamos la foto en lugar del precio
+            const imgSrc = prod.querySelector('img').src; 
             const id = "prod_" + index;
 
             if (heartBtn.classList.contains('active')) {
@@ -22,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 favoritesList = favoritesList.filter(item => item.id !== id);
             } else {
                 heartBtn.classList.add('active');
-                favoritesList.push({ id, title, imgSrc }); // Se guarda la foto
+                favoritesList.push({ id, title, imgSrc }); 
             }
             updateFavoritesUI();
         });
@@ -226,8 +241,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnTop = document.getElementById('btnTop');
     window.addEventListener('scroll', () => { if (window.scrollY > 400) btnTop.classList.add('show'); else btnTop.classList.remove('show'); });
     if(btnTop) btnTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-    // SPLASH SCREEN DE INICIO
-  //  const splashScreen = document.getElementById('splashScreen');
-   // if (splashScreen) { setTimeout(() => { splashScreen.classList.add('hidden'); setTimeout(() => splashScreen.remove(), 600); }, 2000); }
 });
